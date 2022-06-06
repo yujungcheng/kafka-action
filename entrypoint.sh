@@ -1,9 +1,7 @@
 #!/bin/sh
 
 
-
-TOPIC_NAME=${1}
-echo "Set topic: ${TOPIC_NAME}"
+echo "Set topic: ${INPUT_TOPIC_NAME}"
 
 
 docker network create kafka-net --driver bridge
@@ -26,10 +24,10 @@ sleep 10  # wait for broker to start.
 
 docker exec kafka kafka-topics.sh \
     --create \
-    --topic ${TOPIC_NAME} \
+    --topic ${INPUT_TOPIC_NAME} \
     --replication-factor 1 \
     --partitions 1 \
     --bootstrap-server 127.0.0.1:9092
 
-topic_desc=$(docker exec kafka kafka-topics.sh --describe --topic ${TOPIC_NAME} --bootstrap-server 127.0.0.1:9092)
+topic_desc=$(docker exec kafka kafka-topics.sh --describe --topic ${INPUT_TOPIC_NAME} --bootstrap-server 127.0.0.1:9092)
 echo "::set-output name=topic_desc::${topic_desc}"
