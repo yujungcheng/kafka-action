@@ -2,7 +2,7 @@
 
 
 echo "Set topic: ${INPUT_TOPIC_NAME}"
-
+echo ${INPUT_TOPIC_NAME} > /input_topic_name
 
 docker network create kafka-net --driver bridge
 
@@ -21,6 +21,9 @@ docker run -d --network kafka-net -h kafka --name kafka \
     bitnami/kafka:latest
 
 sleep 10  # wait for broker to start.
+
+cat /input_topic_name
+INPUT_TOPIC_NAME=$(cat /input_topic_name)
 
 docker exec kafka kafka-topics.sh \
     --create \
