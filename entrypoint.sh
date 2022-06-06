@@ -16,6 +16,8 @@ docker run -d --network kafka-net -h kafka --name kafka \
     -p 9092:9092 \
     bitnami/kafka:latest
 
+sleep 10  # wait for broker to start.
+
 docker exec kafka kafka-topics.sh \
     --create \
     --topic ${TOPIC_NAME} \
