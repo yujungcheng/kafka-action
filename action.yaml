@@ -1,0 +1,15 @@
+name: 'Kafka Action'
+description: 'Run Kafka docker conotainer and create a topic'
+inputs:
+  TOPIC_NAME:
+    description: 'topic name to be created'
+    required: true
+    default: 'topic_name_1'
+outputs:
+  topic_desc:
+    description: 'description of created topic'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+  - ${{ inputs.TOPIC_NAME }}
