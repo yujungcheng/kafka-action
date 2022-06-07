@@ -20,7 +20,7 @@ inputs:
   topic name:
     description: 'Topic name to be created'
     required: false
-    default: 'mytopic'
+    default: 'default-topic'
 runs:
   using: 'docker'
   image: 'Dockerfile'

@@ -18,13 +18,15 @@ run_kafka="$docker_run --name kafka -p $INPUT_KAFKA_PORT:9092 --network kafka-ne
     bitnami/kafka:$INPUT_KAFKA_VERSION"
 sh -c "$run_kafka"
 
-
-echo "TOPIC NAME: $INPUT_TOPIC_NAME"
+echo "$(date) DOCKER LIST:"
 docker ps
-echo "`date` sleep 10 seconds"
-sleep 10
-echo "`date` create topic"
 
+echo "$(date) TOPIC NAME: $INPUT_TOPIC_NAME"
+
+echo "$(date) sleep 10 seconds"  # wait for kafka to complete start
+sleep 10
+
+echo "$(date) create topic"
 docker exec kafka kafka-topics.sh \
     --create \
     --topic $INPUT_TOPIC_NAME \
