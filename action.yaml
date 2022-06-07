@@ -17,6 +17,10 @@ inputs:
     description: 'The port of Zookeeper host'
     required: false
     default: 2181
+  topic name:
+    description: 'Topic name to be created'
+    required: false
+    default: 'mytopic'
 runs:
   using: 'docker'
   image: 'Dockerfile'
