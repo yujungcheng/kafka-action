@@ -1,8 +1,5 @@
 #!/bin/sh
 
-
-docker network create kafka-net --driver bridge
-
 docker_run="docker run"
 
 run_zookeeper="$docker_run -d -p $INPUT_ZOOKEEPER_PORT:2181 -e ALLOW_ANONYMOUS_LOGIN=yes bitnami/zookeeper:$INPUT_ZOOKEEPER_VERSION"

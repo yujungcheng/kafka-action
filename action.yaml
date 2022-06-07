@@ -1,10 +1,6 @@
 name: 'Kafka Action'
 description: 'Run Kafka docker conotainer and create a topic'
 inputs:
-  topic_name:
-    description: 'topic name to be created'
-    required: true
-    default: 'topic_name_1'
   kafka version:
     description: 'Version of Bitnami Kafka to use'
     required: false
@@ -21,9 +17,6 @@ inputs:
     description: 'The port of Zookeeper host'
     required: false
     default: 2181
-outputs:
-  topic_desc:
-    description: 'description of created topic'
 runs:
   using: 'docker'
   image: 'Dockerfile'
