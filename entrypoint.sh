@@ -12,7 +12,10 @@ echo "TOPIC NAME: $INPUT_TOPIC_NAME"
 
 docker exec kafka kafka-topics.sh \
     --create \
-    --topic monitor \
+    --topic $INPUT_TOPIC_NAME \
     --replication-factor 1 \
     --partitions 1 \
     --bootstrap-server 127.0.0.1:9092
+
+topic_desc=$(docker exec kafka kafka-topics.sh --describe --topic $INPUT_TOPIC_NAME --bootstrap-server 127.0.0.1:9092)
+echo "::set-output name=topic_desc::$topic_desc"
