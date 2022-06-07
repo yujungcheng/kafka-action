@@ -1,6 +1,5 @@
 #!/bin/sh
 
-
 docker network create kafka-net --driver bridge
 
 docker run -d --network kafka-net -h zookeeper --name zookeeper \
@@ -15,3 +14,10 @@ docker run -d --network kafka-net -h kafka --name kafka \
     -e KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://127.0.0.1:9092 \
     -p 9092:9092 \
     bitnami/kafka:latest
+
+docker exec kafka kafka-topics.sh \
+    --create \
+    --topic monitor \
+    --replication-factor 1 \
+    --partitions 1 \
+    --bootstrap-server 127.0.0.1:9092
