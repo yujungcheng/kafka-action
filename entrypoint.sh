@@ -10,6 +10,8 @@ sh -c "$run_kafka"
 
 echo "TOPIC NAME: $INPUT_TOPIC_NAME"
 
+sleep 10
+
 docker exec kafka kafka-topics.sh \
     --create \
     --topic $INPUT_TOPIC_NAME \
