@@ -22,10 +22,3 @@ run_kafka="$run docker run -d --network kafka-net -h kafka --name kafka \
 
 sh -c "${run_zookeeper}"
 sh -c "${run_kafka}"
-
-sh -c "docker exec kafka kafka-topics.sh \
-    --create \
-    --topic monitor \
-    --replication-factor 1 \
-    --partitions 1 \
-    --bootstrap-server 127.0.0.1:9092"
